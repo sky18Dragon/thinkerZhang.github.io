@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-Core | Wireless Remote DIY Kit for Ricoh GR</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #f5f5f5;
+            --accent-color: #ff4742;
+            --card-bg: #1e1e1e;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .lang-btn {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #555;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover {
+            color: var(--text-color);
+            border-color: var(--text-color);
+        }
+        .cta-button {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ccc;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        /* 媒体展示区（图片 + 视频） */
+        .media-container {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .product-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: cover;
+            display: block;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-color: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0 10% 80px 10%;
+        }
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: var(--text-color);
+        }
+
+        /* 语言切换逻辑 CSS */
+        .lang-zh { display: none; }
+        body.zh-active .lang-en { display: none; }
+        body.zh-active .lang-zh { display: inline-block; }
+        body.zh-active p .lang-zh, 
+        body.zh-active h1 .lang-zh, 
+        body.zh-active h3 .lang-zh { display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">R-CORE</div>
+        <div class="header-actions">
+            <!-- 语言切换按钮 -->
+            <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">中文</button>
+            <a href="https://creem.io/你的商品链接" class="cta-button" target="_blank">
+                <span class="lang-en">Get the DIY Kit</span>
+                <span class="lang-zh">获取 DIY 资料包</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>
+            <span class="lang-en">Unlock the Hidden Potential of Your Ricoh GR</span>
+            <span class="lang-zh">解锁理光 GR 的隐藏潜能</span>
+        </h1>
+        <p>
+            <span class="lang-en">A hardcore peripheral designed specifically for Ricoh GR enthusiasts. Build your own wireless remote with this complete DIY toolkit, and experience ultra-low latency and live-view street photography.</span>
+            <span class="lang-zh">一款专为理光 GR 玩家打造的硬核外设。通过全套 DIY 资料包，亲手制作你的专属无线遥控器，体验低延迟与实时取景的极致街拍。</span>
+        </p>
+    </section>
+
+    <!-- 媒体展示区 -->
+    <section class="media-container">
+        <!-- 1. 商品主图 (将 src 替换为你的真实图片地址，建议放在仓库 assets 文件夹下) -->
+        <img src="https://via.placeholder.com/800x450/1e1e1e/888888?text=Your+Product+Image+Here" alt="R-Core Product" class="product-image">
+        
+        <!-- 2. YouTube 演示视频 -->
+        <div class="video-wrapper">
+            <!-- 将 src 中的视频 ID 替换为你的实际 ID -->
+            <iframe 
+                src="https://www.youtube.com/embed/ccnExDyFEpA?rel=0" 
+                title="R-Core YouTube Demo" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>
+                <span class="lang-en">Wireless Freedom</span>
+                <span class="lang-zh">无线自由</span>
+            </h3>
+            <p>
+                <span class="lang-en">Ditch the cables with a stable wireless connection. Unlock advanced features like live-view assistance for flexible shooting.</span>
+                <span class="lang-zh">彻底摆脱线缆束缚，提供稳定可靠的无线连接，支持高阶功能如实时取景辅助，让拍摄更灵活。</span>
+            </p>
+        </div>
+        <div class="feature-card">
+            <h3>
+                <span class="lang-en">Ultra-Low Latency</span>
+                <span class="lang-zh">极速响应</span>
+            </h3>
+            <p>
+                <span class="lang-en">Optimized for street photography. Instant response the moment you press the shutter to capture the decisive moment.</span>
+                <span class="lang-zh">专为街拍优化的低延迟控制，按下快门的瞬间即刻响应，帮你精准捕捉每一个决定性瞬间。</span>
+            </p>
+        </div>
+        <div class="feature-card">
+            <h3>
+                <span class="lang-en">Minimalist & Portable</span>
+                <span class="lang-zh">极简便携</span>
+            </h3>
+            <p>
+                <span class="lang-en">Continuing the minimalist design philosophy of the Ricoh GR. Extremely compact, includes finely tuned 3D printable shell files.</span>
+                <span class="lang-zh">延续理光 GR 的极简设计哲学，体积小巧，包含精细优化的 3D 打印外壳文件，轻松装入口袋。</span>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            <span class="lang-en">Based on the open-source protocol and inspiration from <a href="https://github.com/sky18Dragon/RICOH-GR-Live-View-Shooting" target="_blank">sky18Dragon</a>.</span>
+            <span class="lang-zh">基于 <a href="https://github.com/sky18Dragon/RICOH-GR-Live-View-Shooting" target="_blank">sky18Dragon</a> 的开源协议与灵感开发。</span>
+        </p>
+        <p>&copy; 2026 R-Core Project. All rights reserved.</p>
+    </footer>
+
+    <!-- 语言切换脚本 -->
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const btn = document.getElementById('langToggle');
+            const isZh = body.classList.toggle('zh-active');
+            
+            if (isZh) {
+                btn.textContent = 'English';
+                document.documentElement.lang = 'zh-CN';
+                document.title = 'R-Core | 理光 GR 专属无线遥控器 DIY 资料包';
+            } else {
+                btn.textContent = '中文';
+                document.documentElement.lang = 'en';
+                document.title = 'R-Core | Wireless Remote DIY Kit for Ricoh GR';
+            }
+        }
+    </script>
+</body>
+</html>
