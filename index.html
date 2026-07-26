@@ -228,9 +228,62 @@
         </div>
     </section>
 
+    
     <footer>
-        <p>&copy; 2026 R-Core Project. All rights reserved.</p>
+        <!-- 合规链接 -->
+        <div class="legal-links">
+            <a href="#" onclick="openModal('privacyModal'); return false;">
+                <span class="lang-en">Privacy Policy</span>
+                <span class="lang-zh">隐私政策</span>
+            </a>
+            <a href="#" onclick="openModal('termsModal'); return false;">
+                <span class="lang-en">Terms of Service</span>
+                <span class="lang-zh">服务条款</span>
+            </a>
+        </div>
     </footer>
+
+    <!-- 隐私政策弹窗 -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>
+                <span class="lang-en">Privacy Policy</span>
+                <span class="lang-zh">隐私政策</span>
+            </h2>
+            <p>
+                <span class="lang-en"><strong>Data Collection:</strong> This is a static showcase website. We do not use cookies or collect any personal data directly on this site.</span>
+                <span class="lang-zh"><strong>数据收集：</strong> 本网站为静态展示页面。我们不会在本网站上直接使用 Cookie 或收集任何个人数据。</span>
+            </p>
+            <p>
+                <span class="lang-en"><strong>Third-Party Services:</strong> When you click the purchase button, you will be redirected to our secure payment partner (Creem.io). They will handle your payment information according to their own strict privacy policies. We do not store or have access to your credit card information.</span>
+                <span class="lang-zh"><strong>第三方服务：</strong> 当您点击购买按钮时，将被重定向至我们安全的支付合作伙伴 (Creem.io)。他们将按照其严格的隐私政策处理您的付款信息。我们不会存储也无法访问您的信用卡信息。</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 服务条款弹窗 -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('termsModal')">&times;</span>
+            <h2>
+                <span class="lang-en">Terms of Service</span>
+                <span class="lang-zh">服务条款</span>
+            </h2>
+            <p>
+                <span class="lang-en"><strong>Product Nature:</strong> The R-Core product is a digital DIY toolkit containing schematics, code, and 3D models. <strong>No physical items will be shipped.</strong></span>
+                <span class="lang-zh"><strong>商品性质：</strong> R-Core 是一款包含图纸、代码和 3D 模型的数字化 DIY 资料包。<strong>本商品不包含任何实体物品发货。</strong></span>
+            </p>
+            <p>
+                <span class="lang-en"><strong>Refund Policy:</strong> Due to the replicable nature of digital goods, all sales are final. We do not offer refunds once the files have been downloaded, unless the files are proven to be corrupted or unreadable.</span>
+                <span class="lang-zh"><strong>退款政策：</strong> 由于数字商品的可复制性，一经售出概不退换。除非文件损坏无法读取，否则文件下载后我们不提供无理由退款。</span>
+            </p>
+            <p>
+                <span class="lang-en"><strong>Disclaimer:</strong> This project requires basic electronics and soldering skills. We are not liable for any damage to your camera or personal injury that may occur during the DIY assembly process.</span>
+                <span class="lang-zh"><strong>免责声明：</strong> 制作此项目需要基础的电子和焊接技能。对于在 DIY 组装过程中可能对您的相机造成的损坏或人身伤害，我们不承担任何连带责任。</span>
+            </p>
+        </div>
+    </div>
 
     <!-- 语言切换脚本 -->
     <script>
