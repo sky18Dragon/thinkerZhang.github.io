@@ -51,6 +51,18 @@
             color: var(--text-color);
             border-color: var(--text-color);
         }
+        .buy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        /* 新增：价格标签样式 */
+        .price-tag {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
         .cta-button {
             background-color: var(--text-color);
             color: var(--bg-color);
@@ -151,6 +163,12 @@
             margin: 0 10px;
             text-decoration: underline;
         }
+        /* 新增：底部支持邮箱样式 */
+        .support-info {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #888;
+        }
 
         /* 弹窗样式 */
         .modal {
@@ -175,6 +193,7 @@
             max-height: 70vh;
             overflow-y: auto;
             position: relative;
+            text-align: left;
         }
         .close-btn {
             color: #aaa;
@@ -195,7 +214,8 @@
         body.zh-active h1 .lang-zh, 
         body.zh-active h2 .lang-zh,
         body.zh-active h3 .lang-zh,
-        body.zh-active li .lang-zh { display: block; }
+        body.zh-active li .lang-zh,
+        body.zh-active div .lang-zh { display: block; }
     </style>
 </head>
 <body>
@@ -204,10 +224,18 @@
         <div class="logo">R-CORE</div>
         <div class="header-actions">
             <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">中文</button>
-            <a href="https://www.creem.io/payment/prod_2ck3nX2NaXiYdpsgmy97ua" class="cta-button" target="_blank">
-                <span class="lang-en">Get the DIY Kit</span>
-                <span class="lang-zh">获取 DIY 资料包</span>
-            </a>
+            
+            <!-- 修复：价格明示区 -->
+            <div class="buy-container">
+                <div class="price-tag">
+                    <span class="lang-en">Only $20</span>
+                    <span class="lang-zh">仅需 $20</span>
+                </div>
+                <a href="https://www.creem.io/payment/prod_2ck3nX2NaXiYdpsgmy97ua" class="cta-button" target="_blank">
+                    <span class="lang-en">Get the DIY Kit</span>
+                    <span class="lang-zh">获取 DIY 资料包</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -271,13 +299,25 @@
     </section>
 
     <footer>
-        <!-- 合规链接 -->
+        <p>
+            <span class="lang-en">Based on the open-source protocol and inspiration from <a href="https://github.com/sky18Dragon/RICOH-GR-Live-View-Shooting" target="_blank">sky18Dragon</a>.</span>
+            <span class="lang-zh">基于 <a href="https://github.com/sky18Dragon/RICOH-GR-Live-View-Shooting" target="_blank">sky18Dragon</a> 的开源协议与灵感开发。</span>
+        </p>
+        <p>&copy; 2026 R-Core Project. All rights reserved.</p>
+        
+        <!-- 修复：提供客户支持邮箱 -->
+        <div class="support-info">
+            <span class="lang-en">Customer Support: <a href="mailto:【你的真实支持邮箱】">【你的真实支持邮箱】</a></span>
+            <span class="lang-zh">客户支持邮箱: <a href="mailto:【你的真实支持邮箱】">【你的真实支持邮箱】</a></span>
+        </div>
+
+        <!-- 修复：使用 javascript:void(0); 替代 # -->
         <div class="legal-links">
-            <a href="#" onclick="openModal('privacyModal'); return false;">
+            <a href="javascript:void(0);" onclick="openModal('privacyModal'); return false;">
                 <span class="lang-en">Privacy Policy</span>
                 <span class="lang-zh">隐私政策</span>
             </a>
-            <a href="#" onclick="openModal('termsModal'); return false;">
+            <a href="javascript:void(0);" onclick="openModal('termsModal'); return false;">
                 <span class="lang-en">Terms of Service</span>
                 <span class="lang-zh">服务条款</span>
             </a>
@@ -299,6 +339,10 @@
             <p>
                 <span class="lang-en"><strong>Third-Party Services:</strong> When you click the purchase button, you will be redirected to our secure payment partner (Creem.io). They will handle your payment information according to their own strict privacy policies. We do not store or have access to your credit card information.</span>
                 <span class="lang-zh"><strong>第三方服务：</strong> 当您点击购买按钮时，将被重定向至我们安全的支付合作伙伴 (Creem.io)。他们将按照其严格的隐私政策处理您的付款信息。我们不会存储也无法访问您的信用卡信息。</span>
+            </p>
+            <p>
+                <span class="lang-en"><strong>Contact Us:</strong> If you have any privacy concerns, please contact <a href="mailto:【你的真实支持邮箱】">【你的真实支持邮箱】</a>.</span>
+                <span class="lang-zh"><strong>联系我们：</strong> 如果您对隐私有任何疑问，请联系 <a href="mailto:【你的真实支持邮箱】">【你的真实支持邮箱】</a>。</span>
             </p>
         </div>
     </div>
@@ -322,6 +366,10 @@
             <p>
                 <span class="lang-en"><strong>Disclaimer:</strong> This project requires basic electronics and soldering skills. We are not liable for any damage to your camera or personal injury that may occur during the DIY assembly process.</span>
                 <span class="lang-zh"><strong>免责声明：</strong> 制作此项目需要基础的电子和焊接技能。对于在 DIY 组装过程中可能对您的相机造成的损坏或人身伤害，我们不承担任何连带责任。</span>
+            </p>
+            <p>
+                <span class="lang-en"><strong>Support:</strong> For technical assistance after purchase, please reach out to <a href="mailto:【你的真实支持邮箱】">【你的真实支持邮箱】</a>.</span>
+                <span class="lang-zh"><strong>售后支持：</strong> 购买后如需技术协助，请联系 <a href="mailto:【你的真实支持邮箱】">【你的真实支持邮箱】</a>。</span>
             </p>
         </div>
     </div>
